@@ -8,12 +8,21 @@ import EventFeedback from "../Images/form01.png"
 import OrderForm from "../Images/form02.png"
 import uuid from "react-uuid";
 import { useHistory } from 'react-router';
+import axios from "axios";
 
 function Template() {
     const history = useHistory();
     const createForm = ()=>{
-        const id= uuid();
-        history.push("/form/"+id)
+        const create_form_id= uuid();
+        history.push("/form/"+create_form_id)
+
+        var questions_list=[{questionText: "Question", questionType:"radio", options : [{optionText: "Option 1"}], open: true, required:false}]
+    
+        axios.post(`http://localhost:9000/add_questions/${create_form_id}`,{
+            "document_name": "untitled_form",
+            "doc_desc": "Add Description",
+            "questions": questions_list,
+        })
     }
     return (
         <div className="template_section">

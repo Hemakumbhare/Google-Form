@@ -1,29 +1,45 @@
-import './App.css';
-import Header from "./Components/Header";
-import Template from './Components/Template';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import React from 'react';
+import {BrowserRouter as Router ,Switch, Route} from "react-router-dom"
 import Formheader from './Components/Formheader';
-import CenteredTab from "./Components/Tabs";
+import Header from "./Components/Header"
+import Mainbody from './Components/Mainbody';
+import SubmitForm from './Components/QuestionPaper';
 import Question_form from './Components/Question_form';
-import Response from './Components/Response';
+import CenteredTabs from './Components/Tabs';
+import Template from './Components/Template';
+import User_form from './Components/user_form';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/form/:id">
-            <Formheader/>
-            <CenteredTab/>
-            <Question_form/>
-            <Response path="/response"/>
-          </Route>
-          <Route path="/">
-            <Header />
-            <Template />
-          </Route>
-        </Switch>
-      </Router>
+    <div className="app">
+         <Router>
+           <Switch>
+                   
+           <Route path="/form/:id">
+                 <Formheader />
+                 <CenteredTabs />
+                 <Question_form />
+
+              </Route>
+
+              <Route path="/response">
+                 <User_form />
+              </Route>
+
+              <Route path="/submitted">
+                 <SubmitForm />
+              </Route>
+
+              
+              
+              <Route path="/">
+                <Header />
+                <Template />
+                <Mainbody />
+              </Route>
+        
+           </Switch>
+         </Router>
 
     </div>
   );

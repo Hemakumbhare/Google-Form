@@ -11,13 +11,24 @@ import avatarImage from '../Images/unnamed.jpg';
 import TemporaryDrawer from './TemporaryDrawer';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { useHistory } from 'react-router-dom';
+import { useStateValue } from './StateProvider'
+import AlertDialog from './Alert';
 
 function Formheader() {
+    const history = useHistory();
+  const [{doc_name}, dispatch] = useStateValue();
+
+
+    function navigates(){
+        history.push("/response")
+    }
+
     return (
         <div className="form_header">
             <div className="form_header_left">
             <img src={formImage} style={{height:'40px',width:'40px'}} alt="form-image"/>
-                <input type="text" placeholder="Untitled Form" className="form_name"></input>
+            <input type="text" placeholder="Untitled form" className="form_name" value={doc_name} ></input>
                 <FolderOpenIcon className="form_header_icon" style={{marginRight:"10px"}}></FolderOpenIcon>
                 <StarBorderIcon className="form_header_icon" style={{marginRight:"10px"}}/>
                 <span style={{fontSize:"12px", fontWeight:"600"}}>All Chnages Saved in Drive </span>
@@ -27,15 +38,15 @@ function Formheader() {
                     <ColorLensIcon size="small" className="form_header_icon"/>
                 </IconButton>
 
-                <IconButton>
+                <IconButton onClick={navigates} target="blank">
                     <VisibilityIcon  className="form_header_icon"/>
                 </IconButton>
 
-                <IconButton>
+                <IconButton  target="blank">
                     <SettingsIcon  className="form_header_icon"/>
                 </IconButton>
-
-                <Button variant="contained" color="primary" href="#contained-button">Send</Button>
+                <AlertDialog />
+                {/* <Button variant="contained" color="primary" href="#contained-button">Send</Button> */}
 
                 <IconButton>
                     <MoreVertIcon  className="form_header_icon"/>

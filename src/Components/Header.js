@@ -26,11 +26,11 @@ function Header() {
             </div>
 
             <div className="header_right">
-                <IconButton>
-                <AppsIcon/>
+                <IconButton style={{margin:"0px"}}>
+                <AppsIcon style={{fontSize:"22px"}}/>
                 </IconButton>
                 <IconButton>
-                    <Avatar src={avatarImage}/>
+                    <Avatar style={{height:"30px",width:"30px"}} src={avatarImage}/>
                 </IconButton>
             </div>
         </div>
